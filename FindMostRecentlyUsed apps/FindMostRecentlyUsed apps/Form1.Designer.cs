@@ -37,14 +37,15 @@
             this.addAppsButton = new System.Windows.Forms.Button();
             this.appsListBox = new System.Windows.Forms.ListBox();
             this.removeApp = new System.Windows.Forms.Button();
-            this.loadDefaultAppsBasedOnMachineName = new System.Windows.Forms.Button();
             this.defaultAppsSelectionBox = new System.Windows.Forms.ComboBox();
             this.defaultAppGroupsLabel = new System.Windows.Forms.Label();
+            this.populateListButton = new System.Windows.Forms.Button();
+            this.clearListButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // checkApps
             // 
-            this.checkApps.Location = new System.Drawing.Point(60, 469);
+            this.checkApps.Location = new System.Drawing.Point(60, 440);
             this.checkApps.Name = "checkApps";
             this.checkApps.Size = new System.Drawing.Size(150, 23);
             this.checkApps.TabIndex = 1;
@@ -126,16 +127,6 @@
             this.removeApp.UseVisualStyleBackColor = true;
             this.removeApp.Click += new System.EventHandler(this.removeApp_Click);
             // 
-            // loadDefaultAppsBasedOnMachineName
-            // 
-            this.loadDefaultAppsBasedOnMachineName.Location = new System.Drawing.Point(60, 440);
-            this.loadDefaultAppsBasedOnMachineName.Name = "loadDefaultAppsBasedOnMachineName";
-            this.loadDefaultAppsBasedOnMachineName.Size = new System.Drawing.Size(161, 23);
-            this.loadDefaultAppsBasedOnMachineName.TabIndex = 10;
-            this.loadDefaultAppsBasedOnMachineName.Text = "Load default apps based on machine name";
-            this.loadDefaultAppsBasedOnMachineName.UseVisualStyleBackColor = true;
-            this.loadDefaultAppsBasedOnMachineName.Click += new System.EventHandler(this.loadDefaultAppsBasedOnMachineName_Click);
-            // 
             // defaultAppsSelectionBox
             // 
             this.defaultAppsSelectionBox.FormattingEnabled = true;
@@ -153,14 +144,35 @@
             this.defaultAppGroupsLabel.TabIndex = 12;
             this.defaultAppGroupsLabel.Text = "Default app groups";
             // 
+            // populateListButton
+            // 
+            this.populateListButton.Location = new System.Drawing.Point(677, 384);
+            this.populateListButton.Name = "populateListButton";
+            this.populateListButton.Size = new System.Drawing.Size(97, 23);
+            this.populateListButton.TabIndex = 13;
+            this.populateListButton.Text = "Populate List";
+            this.populateListButton.UseVisualStyleBackColor = true;
+            this.populateListButton.Click += new System.EventHandler(this.populateListButton_Click);
+            // 
+            // clearListButton
+            // 
+            this.clearListButton.Location = new System.Drawing.Point(677, 411);
+            this.clearListButton.Name = "clearListButton";
+            this.clearListButton.Size = new System.Drawing.Size(75, 23);
+            this.clearListButton.TabIndex = 14;
+            this.clearListButton.Text = "Clear List";
+            this.clearListButton.UseVisualStyleBackColor = true;
+            this.clearListButton.Click += new System.EventHandler(this.clearListButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1172, 568);
+            this.Controls.Add(this.clearListButton);
+            this.Controls.Add(this.populateListButton);
             this.Controls.Add(this.defaultAppGroupsLabel);
             this.Controls.Add(this.defaultAppsSelectionBox);
-            this.Controls.Add(this.loadDefaultAppsBasedOnMachineName);
             this.Controls.Add(this.removeApp);
             this.Controls.Add(this.appsListBox);
             this.Controls.Add(this.addAppsButton);
@@ -188,9 +200,10 @@
         private System.Windows.Forms.Button addAppsButton;
         private System.Windows.Forms.ListBox appsListBox;
         private System.Windows.Forms.Button removeApp;
-        private System.Windows.Forms.Button loadDefaultAppsBasedOnMachineName;
         private System.Windows.Forms.ComboBox defaultAppsSelectionBox;
         private System.Windows.Forms.Label defaultAppGroupsLabel;
+        private System.Windows.Forms.Button populateListButton;
+        private System.Windows.Forms.Button clearListButton;
     }
 }
 

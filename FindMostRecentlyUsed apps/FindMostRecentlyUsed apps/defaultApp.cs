@@ -13,6 +13,14 @@ namespace FindMostRecentlyUsed_apps
             appName = newAppName;
             appLocation = newAppLocation;
         }
+        public string getAppLocation()
+        {
+            return appLocation;
+        }
+        public string getAppName()
+        {
+            return appName;
+        }
        public string appName;
        public string appLocation;
         

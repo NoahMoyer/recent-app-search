@@ -34,18 +34,22 @@ namespace FindMostRecentlyUsed_apps
                 string tempGroupName;
                 string tempAppName;
                 string tempAppLocation;
-                List<defaultApp> listOfAppsToAdd = new List<defaultApp>();
+                List<defaultApp> listOfAppsToAdd; 
                 while (!csvParser.EndOfData)
                 {
                     //read line and add each field to a entry in the array
                     string[] fields = csvParser.ReadFields();
                     //create list of apps for new default 
+                    listOfAppsToAdd = new List<defaultApp>(); //create new list of apps for each group
                     for (int i = 1; i < fields.Length; i++)
                     {
                         tempAppName = fields[i];
                         i++;
                         tempAppLocation = fields[i];
                         listOfAppsToAdd.Add(new defaultApp(tempAppName, tempAppLocation));
+                        //tempGroupName = null;
+                        //tempAppName = null;
+                        //tempAppLocation = null;
                     }
                     //create group with new list that was just created
                     tempGroupName = fields[0];

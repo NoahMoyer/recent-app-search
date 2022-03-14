@@ -22,6 +22,10 @@ namespace FindMostRecentlyUsed_apps
             if (File.Exists("defaultAppGroups.csv"))
             {
                 csveditor.readCSVFile();
+                foreach (AppGroup group in csveditor.AppGroups)
+                {
+                    defaultAppsSelectionBox.Items.Add(group.getGroupName());
+                }
             }
             else if (!File.Exists("defaultAppGroups.csv"))
             {
@@ -99,6 +103,30 @@ namespace FindMostRecentlyUsed_apps
         private void loadDefaultAppsBasedOnMachineName_Click(object sender, EventArgs e)
         {
             //TODO: implement based on department names
+        }
+
+        private void populateListButton_Click(object sender, EventArgs e)
+        {
+            //populate app list based on selected group name
+            if (defaultAppsSelectionBox.SelectedItem != null)
+            {
+                foreach (AppGroup group in csveditor.AppGroups)
+                {
+                    if (group.getGroupName() == defaultAppsSelectionBox.SelectedItem.ToString())
+                    {
+                        foreach(defaultApp app in group.getAppsList())
+                        {
+                            appsListBox.Items.Add(app.getAppLocation());
+                        }
+                    }
+                }
+
+            }
+        }
+
+        private void clearListButton_Click(object sender, EventArgs e)
+        {
+            appsListBox.Items.Clear();
         }
     }
     }

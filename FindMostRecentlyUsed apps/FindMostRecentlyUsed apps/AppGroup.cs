@@ -24,6 +24,18 @@ namespace FindMostRecentlyUsed_apps
                 defaultApps.Remove(appToRemove);
             }
         }
+        public string getGroupName()
+        {
+            return groupName;
+        }
+        public void setGroupName(string newGroupName)
+        {
+            groupName = newGroupName;
+        }
+        public List<defaultApp> getAppsList()
+        {
+            return defaultApps;
+        }
         private string groupName;
         private List<defaultApp> defaultApps = new List<defaultApp>();
     }
