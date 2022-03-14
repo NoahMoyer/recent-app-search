@@ -38,11 +38,13 @@
             this.appsListBox = new System.Windows.Forms.ListBox();
             this.removeApp = new System.Windows.Forms.Button();
             this.loadDefaultAppsBasedOnMachineName = new System.Windows.Forms.Button();
+            this.defaultAppsSelectionBox = new System.Windows.Forms.ComboBox();
+            this.defaultAppGroupsLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // checkApps
             // 
-            this.checkApps.Location = new System.Drawing.Point(498, 233);
+            this.checkApps.Location = new System.Drawing.Point(60, 469);
             this.checkApps.Name = "checkApps";
             this.checkApps.Size = new System.Drawing.Size(150, 23);
             this.checkApps.TabIndex = 1;
@@ -53,7 +55,7 @@
             // currentMachineNameLabel
             // 
             this.currentMachineNameLabel.AutoSize = true;
-            this.currentMachineNameLabel.Location = new System.Drawing.Point(495, 91);
+            this.currentMachineNameLabel.Location = new System.Drawing.Point(57, 327);
             this.currentMachineNameLabel.Name = "currentMachineNameLabel";
             this.currentMachineNameLabel.Size = new System.Drawing.Size(119, 13);
             this.currentMachineNameLabel.TabIndex = 2;
@@ -71,14 +73,14 @@
             // 
             // machineNameTextBox
             // 
-            this.machineNameTextBox.Location = new System.Drawing.Point(498, 119);
+            this.machineNameTextBox.Location = new System.Drawing.Point(60, 355);
             this.machineNameTextBox.Name = "machineNameTextBox";
             this.machineNameTextBox.Size = new System.Drawing.Size(150, 20);
             this.machineNameTextBox.TabIndex = 4;
             // 
             // changeMachineNameButton
             // 
-            this.changeMachineNameButton.Location = new System.Drawing.Point(654, 119);
+            this.changeMachineNameButton.Location = new System.Drawing.Point(216, 355);
             this.changeMachineNameButton.Name = "changeMachineNameButton";
             this.changeMachineNameButton.Size = new System.Drawing.Size(142, 23);
             this.changeMachineNameButton.TabIndex = 5;
@@ -88,7 +90,7 @@
             // 
             // resetMachineNameButton
             // 
-            this.resetMachineNameButton.Location = new System.Drawing.Point(802, 119);
+            this.resetMachineNameButton.Location = new System.Drawing.Point(364, 355);
             this.resetMachineNameButton.Name = "resetMachineNameButton";
             this.resetMachineNameButton.Size = new System.Drawing.Size(126, 23);
             this.resetMachineNameButton.TabIndex = 6;
@@ -98,7 +100,7 @@
             // 
             // addAppsButton
             // 
-            this.addAppsButton.Location = new System.Drawing.Point(498, 146);
+            this.addAppsButton.Location = new System.Drawing.Point(60, 382);
             this.addAppsButton.Name = "addAppsButton";
             this.addAppsButton.Size = new System.Drawing.Size(75, 23);
             this.addAppsButton.TabIndex = 7;
@@ -111,12 +113,12 @@
             this.appsListBox.FormattingEnabled = true;
             this.appsListBox.Location = new System.Drawing.Point(60, 91);
             this.appsListBox.Name = "appsListBox";
-            this.appsListBox.Size = new System.Drawing.Size(365, 186);
+            this.appsListBox.Size = new System.Drawing.Size(991, 186);
             this.appsListBox.TabIndex = 8;
             // 
             // removeApp
             // 
-            this.removeApp.Location = new System.Drawing.Point(498, 175);
+            this.removeApp.Location = new System.Drawing.Point(60, 411);
             this.removeApp.Name = "removeApp";
             this.removeApp.Size = new System.Drawing.Size(93, 23);
             this.removeApp.TabIndex = 9;
@@ -126,7 +128,7 @@
             // 
             // loadDefaultAppsBasedOnMachineName
             // 
-            this.loadDefaultAppsBasedOnMachineName.Location = new System.Drawing.Point(498, 204);
+            this.loadDefaultAppsBasedOnMachineName.Location = new System.Drawing.Point(60, 440);
             this.loadDefaultAppsBasedOnMachineName.Name = "loadDefaultAppsBasedOnMachineName";
             this.loadDefaultAppsBasedOnMachineName.Size = new System.Drawing.Size(161, 23);
             this.loadDefaultAppsBasedOnMachineName.TabIndex = 10;
@@ -134,11 +136,30 @@
             this.loadDefaultAppsBasedOnMachineName.UseVisualStyleBackColor = true;
             this.loadDefaultAppsBasedOnMachineName.Click += new System.EventHandler(this.loadDefaultAppsBasedOnMachineName_Click);
             // 
+            // defaultAppsSelectionBox
+            // 
+            this.defaultAppsSelectionBox.FormattingEnabled = true;
+            this.defaultAppsSelectionBox.Location = new System.Drawing.Point(677, 357);
+            this.defaultAppsSelectionBox.Name = "defaultAppsSelectionBox";
+            this.defaultAppsSelectionBox.Size = new System.Drawing.Size(121, 21);
+            this.defaultAppsSelectionBox.TabIndex = 11;
+            // 
+            // defaultAppGroupsLabel
+            // 
+            this.defaultAppGroupsLabel.AutoSize = true;
+            this.defaultAppGroupsLabel.Location = new System.Drawing.Point(677, 326);
+            this.defaultAppGroupsLabel.Name = "defaultAppGroupsLabel";
+            this.defaultAppGroupsLabel.Size = new System.Drawing.Size(97, 13);
+            this.defaultAppGroupsLabel.TabIndex = 12;
+            this.defaultAppGroupsLabel.Text = "Default app groups";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1134, 719);
+            this.ClientSize = new System.Drawing.Size(1172, 568);
+            this.Controls.Add(this.defaultAppGroupsLabel);
+            this.Controls.Add(this.defaultAppsSelectionBox);
             this.Controls.Add(this.loadDefaultAppsBasedOnMachineName);
             this.Controls.Add(this.removeApp);
             this.Controls.Add(this.appsListBox);
@@ -150,7 +171,7 @@
             this.Controls.Add(this.currentMachineNameLabel);
             this.Controls.Add(this.checkApps);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Recent Application Usage Analyzer";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -168,6 +189,8 @@
         private System.Windows.Forms.ListBox appsListBox;
         private System.Windows.Forms.Button removeApp;
         private System.Windows.Forms.Button loadDefaultAppsBasedOnMachineName;
+        private System.Windows.Forms.ComboBox defaultAppsSelectionBox;
+        private System.Windows.Forms.Label defaultAppGroupsLabel;
     }
 }
 

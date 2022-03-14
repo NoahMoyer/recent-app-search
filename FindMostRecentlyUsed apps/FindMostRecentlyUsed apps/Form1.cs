@@ -14,19 +14,33 @@ namespace FindMostRecentlyUsed_apps
     public partial class Form1 : Form
     {
         OpenFileDialog openFileDialog = new OpenFileDialog(); //file dialog for selecting applications to look at
+        CSVeditor csveditor = new CSVeditor();//editor for file containing app groups
         public Form1()
         {
             InitializeComponent();
+            //on load we want to open a file that contains default app groups
+            if (File.Exists("defaultAppGroups.csv"))
+            {
+                csveditor.readCSVFile();
+            }
+            else if (!File.Exists("defaultAppGroups.csv"))
+            {
+                File.Create("defaultAppGroups.csv");
+            }
             
         }
 
         //check selected apps
         private void button1_Click(object sender, EventArgs e)
         {
-            FileInfo file = new FileInfo();
-            foreach (string app in appsListBox.Items)
+            
+            for (int i = 0; i < appsListBox.Items.Count; i++)
             {
-
+                FileInfo file = new FileInfo(appsListBox.Items[i].ToString());
+                DateTime lasAccessed = file.LastAccessTime;//gets time app was last accessed
+                //lasAccessed.ToString();
+                appsListBox.Items[i] = appsListBox.Items[i].ToString() + " Last accessed  " + lasAccessed.ToString();
+               
             }
         }
 
@@ -34,9 +48,10 @@ namespace FindMostRecentlyUsed_apps
         {
 
         }
-
+        
         private void Form1_Load(object sender, EventArgs e)
         {
+            //update machine name to current machine when form loads
             currentMachineNameLabel.Text = "Current machine name: " + Environment.MachineName; //load current machine name
             
         }
