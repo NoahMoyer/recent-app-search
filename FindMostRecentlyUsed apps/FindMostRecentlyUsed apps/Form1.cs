@@ -15,6 +15,7 @@ namespace FindMostRecentlyUsed_apps
     {
         OpenFileDialog openFileDialog = new OpenFileDialog(); //file dialog for selecting applications to look at
         CSVeditor csveditor = new CSVeditor();//editor for file containing app groups
+        public string machineName;
         public Form1()
         {
             InitializeComponent();
@@ -31,6 +32,8 @@ namespace FindMostRecentlyUsed_apps
             {
                 File.Create("defaultAppGroups.csv");
             }
+
+
             
         }
 
@@ -56,20 +59,64 @@ namespace FindMostRecentlyUsed_apps
         private void Form1_Load(object sender, EventArgs e)
         {
             //update machine name to current machine when form loads
-            currentMachineNameLabel.Text = "Current machine name: " + Environment.MachineName; //load current machine name
-            
+            machineName = Environment.MachineName;
+            currentMachineNameLabel.Text = "Current machine name: " + machineName; //load current machine name
+
+            //TODO
+            //when form loads we want to select the app group based on the prefix of the computer name
+            foreach (AppGroup group in csveditor.AppGroups)
+            {
+
+                if (machineName.StartsWith(group.getGroupName()) /*&& defaultAppsSelectionBox.Items.Contains(Environment.MachineName.StartsWith(group.getGroupName()))*/)
+                {
+
+                    //defaultAppsSelectionBox.SelectedItem = defaultAppsSelectionBox.FindString(group.getGroupName());
+                    defaultAppsSelectionBox.Text = group.getGroupName();
+                }
+
+            }
+
         }
 
         //change current machine to typed one
         private void changeMachineNameButton_Click(object sender, EventArgs e)
         {
-            currentMachineNameLabel.Text = "Current machine name: " + machineNameTextBox.Text;
+            machineName = machineNameTextBox.Text;
+            currentMachineNameLabel.Text = "Current machine name: " + machineName;
+
+            
+            //when the name is changed we will want to update the app group based on the name
+            foreach (AppGroup group in csveditor.AppGroups)
+            {
+
+                if (machineName.StartsWith(group.getGroupName()) /*&& defaultAppsSelectionBox.Items.Contains(Environment.MachineName.StartsWith(group.getGroupName()))*/)
+                {
+
+                //defaultAppsSelectionBox.SelectedItem = defaultAppsSelectionBox.FindString(group.getGroupName());
+                     defaultAppsSelectionBox.Text = group.getGroupName();
+                }
+               
+            }
         }
 
         //reset machine name to current machine
         private void resetMachineNameButton_Click(object sender, EventArgs e)
         {
-            currentMachineNameLabel.Text = "Current machine name: " + Environment.MachineName; //load current machine name
+            machineName = Environment.MachineName;
+            currentMachineNameLabel.Text = "Current machine name: " + machineName; //load current machine name
+            
+            //when the name is changed we will want to update the app group based on the name
+            foreach (AppGroup group in csveditor.AppGroups)
+            {
+
+                if (machineName.StartsWith(group.getGroupName()) /*&& defaultAppsSelectionBox.Items.Contains(Environment.MachineName.StartsWith(group.getGroupName()))*/)
+                {
+
+                    //defaultAppsSelectionBox.SelectedItem = defaultAppsSelectionBox.FindString(group.getGroupName());
+                    defaultAppsSelectionBox.Text = group.getGroupName();
+                }
+
+            }
         }
 
         //allow user to add apps to look at
@@ -127,6 +174,26 @@ namespace FindMostRecentlyUsed_apps
         private void clearListButton_Click(object sender, EventArgs e)
         {
             appsListBox.Items.Clear();
+        }
+
+        private void refreshGroupsButton_Click(object sender, EventArgs e)
+        {
+            //clear list before remaking it
+            defaultAppsSelectionBox.Items.Clear();
+            csveditor.AppGroups.Clear();
+            //refresh groups list
+            if (File.Exists("defaultAppGroups.csv"))
+            {
+                csveditor.readCSVFile();
+                foreach (AppGroup group in csveditor.AppGroups)
+                {
+                    defaultAppsSelectionBox.Items.Add(group.getGroupName());
+                }
+            }
+            else if (!File.Exists("defaultAppGroups.csv"))
+            {
+                File.Create("defaultAppGroups.csv");
+            }
         }
     }
     }

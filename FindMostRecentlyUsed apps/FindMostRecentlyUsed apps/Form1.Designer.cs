@@ -41,6 +41,7 @@
             this.defaultAppGroupsLabel = new System.Windows.Forms.Label();
             this.populateListButton = new System.Windows.Forms.Button();
             this.clearListButton = new System.Windows.Forms.Button();
+            this.refreshGroupsButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // checkApps
@@ -164,11 +165,22 @@
             this.clearListButton.UseVisualStyleBackColor = true;
             this.clearListButton.Click += new System.EventHandler(this.clearListButton_Click);
             // 
+            // refreshGroupsButton
+            // 
+            this.refreshGroupsButton.Location = new System.Drawing.Point(815, 354);
+            this.refreshGroupsButton.Name = "refreshGroupsButton";
+            this.refreshGroupsButton.Size = new System.Drawing.Size(95, 23);
+            this.refreshGroupsButton.TabIndex = 15;
+            this.refreshGroupsButton.Text = "Refresh Groups";
+            this.refreshGroupsButton.UseVisualStyleBackColor = true;
+            this.refreshGroupsButton.Click += new System.EventHandler(this.refreshGroupsButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1172, 568);
+            this.Controls.Add(this.refreshGroupsButton);
             this.Controls.Add(this.clearListButton);
             this.Controls.Add(this.populateListButton);
             this.Controls.Add(this.defaultAppGroupsLabel);
@@ -204,6 +216,7 @@
         private System.Windows.Forms.Label defaultAppGroupsLabel;
         private System.Windows.Forms.Button populateListButton;
         private System.Windows.Forms.Button clearListButton;
+        private System.Windows.Forms.Button refreshGroupsButton;
     }
 }
 
