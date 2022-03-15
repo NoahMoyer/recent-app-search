@@ -195,6 +195,18 @@ namespace FindMostRecentlyUsed_apps
                 File.Create("defaultAppGroups.csv");
             }
         }
+
+        //kind of janky way to copy output to clipboard
+        private void appsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            System.Text.StringBuilder copy_buffer = new System.Text.StringBuilder();
+            foreach (object item in appsListBox.Items)
+                copy_buffer.AppendLine(item.ToString());
+            if (copy_buffer.Length > 0)
+                Clipboard.SetText(copy_buffer.ToString());
+        }
+
+        
     }
     }
 

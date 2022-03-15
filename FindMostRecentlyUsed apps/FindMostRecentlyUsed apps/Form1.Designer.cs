@@ -42,6 +42,7 @@
             this.populateListButton = new System.Windows.Forms.Button();
             this.clearListButton = new System.Windows.Forms.Button();
             this.refreshGroupsButton = new System.Windows.Forms.Button();
+            this.generateReportButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // checkApps
@@ -115,8 +116,10 @@
             this.appsListBox.FormattingEnabled = true;
             this.appsListBox.Location = new System.Drawing.Point(60, 91);
             this.appsListBox.Name = "appsListBox";
+            this.appsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.appsListBox.Size = new System.Drawing.Size(991, 186);
             this.appsListBox.TabIndex = 8;
+            this.appsListBox.SelectedIndexChanged += new System.EventHandler(this.appsListBox_SelectedIndexChanged);
             // 
             // removeApp
             // 
@@ -175,11 +178,21 @@
             this.refreshGroupsButton.UseVisualStyleBackColor = true;
             this.refreshGroupsButton.Click += new System.EventHandler(this.refreshGroupsButton_Click);
             // 
+            // generateReportButton
+            // 
+            this.generateReportButton.Location = new System.Drawing.Point(680, 440);
+            this.generateReportButton.Name = "generateReportButton";
+            this.generateReportButton.Size = new System.Drawing.Size(75, 23);
+            this.generateReportButton.TabIndex = 16;
+            this.generateReportButton.Text = "button1";
+            this.generateReportButton.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1172, 568);
+            this.Controls.Add(this.generateReportButton);
             this.Controls.Add(this.refreshGroupsButton);
             this.Controls.Add(this.clearListButton);
             this.Controls.Add(this.populateListButton);
@@ -217,6 +230,7 @@
         private System.Windows.Forms.Button populateListButton;
         private System.Windows.Forms.Button clearListButton;
         private System.Windows.Forms.Button refreshGroupsButton;
+        private System.Windows.Forms.Button generateReportButton;
     }
 }
 
