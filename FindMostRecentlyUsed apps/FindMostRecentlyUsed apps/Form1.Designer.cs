@@ -58,7 +58,7 @@
             // currentMachineNameLabel
             // 
             this.currentMachineNameLabel.AutoSize = true;
-            this.currentMachineNameLabel.Location = new System.Drawing.Point(57, 327);
+            this.currentMachineNameLabel.Location = new System.Drawing.Point(57, 326);
             this.currentMachineNameLabel.Name = "currentMachineNameLabel";
             this.currentMachineNameLabel.Size = new System.Drawing.Size(119, 13);
             this.currentMachineNameLabel.TabIndex = 2;
@@ -76,7 +76,7 @@
             // 
             // machineNameTextBox
             // 
-            this.machineNameTextBox.Location = new System.Drawing.Point(60, 355);
+            this.machineNameTextBox.Location = new System.Drawing.Point(60, 354);
             this.machineNameTextBox.Name = "machineNameTextBox";
             this.machineNameTextBox.Size = new System.Drawing.Size(150, 20);
             this.machineNameTextBox.TabIndex = 4;
@@ -105,7 +105,7 @@
             // 
             this.addAppsButton.Location = new System.Drawing.Point(60, 382);
             this.addAppsButton.Name = "addAppsButton";
-            this.addAppsButton.Size = new System.Drawing.Size(75, 23);
+            this.addAppsButton.Size = new System.Drawing.Size(150, 23);
             this.addAppsButton.TabIndex = 7;
             this.addAppsButton.Text = "Add apps";
             this.addAppsButton.UseVisualStyleBackColor = true;
@@ -125,7 +125,7 @@
             // 
             this.removeApp.Location = new System.Drawing.Point(60, 411);
             this.removeApp.Name = "removeApp";
-            this.removeApp.Size = new System.Drawing.Size(93, 23);
+            this.removeApp.Size = new System.Drawing.Size(150, 23);
             this.removeApp.TabIndex = 9;
             this.removeApp.Text = "Remove App";
             this.removeApp.UseVisualStyleBackColor = true;
@@ -134,7 +134,7 @@
             // defaultAppsSelectionBox
             // 
             this.defaultAppsSelectionBox.FormattingEnabled = true;
-            this.defaultAppsSelectionBox.Location = new System.Drawing.Point(677, 357);
+            this.defaultAppsSelectionBox.Location = new System.Drawing.Point(520, 357);
             this.defaultAppsSelectionBox.Name = "defaultAppsSelectionBox";
             this.defaultAppsSelectionBox.Size = new System.Drawing.Size(121, 21);
             this.defaultAppsSelectionBox.TabIndex = 11;
@@ -142,7 +142,7 @@
             // defaultAppGroupsLabel
             // 
             this.defaultAppGroupsLabel.AutoSize = true;
-            this.defaultAppGroupsLabel.Location = new System.Drawing.Point(677, 326);
+            this.defaultAppGroupsLabel.Location = new System.Drawing.Point(520, 326);
             this.defaultAppGroupsLabel.Name = "defaultAppGroupsLabel";
             this.defaultAppGroupsLabel.Size = new System.Drawing.Size(97, 13);
             this.defaultAppGroupsLabel.TabIndex = 12;
@@ -150,7 +150,7 @@
             // 
             // populateListButton
             // 
-            this.populateListButton.Location = new System.Drawing.Point(677, 384);
+            this.populateListButton.Location = new System.Drawing.Point(520, 384);
             this.populateListButton.Name = "populateListButton";
             this.populateListButton.Size = new System.Drawing.Size(97, 23);
             this.populateListButton.TabIndex = 13;
@@ -160,9 +160,9 @@
             // 
             // clearListButton
             // 
-            this.clearListButton.Location = new System.Drawing.Point(677, 411);
+            this.clearListButton.Location = new System.Drawing.Point(520, 413);
             this.clearListButton.Name = "clearListButton";
-            this.clearListButton.Size = new System.Drawing.Size(75, 23);
+            this.clearListButton.Size = new System.Drawing.Size(97, 23);
             this.clearListButton.TabIndex = 14;
             this.clearListButton.Text = "Clear List";
             this.clearListButton.UseVisualStyleBackColor = true;
@@ -170,7 +170,7 @@
             // 
             // refreshGroupsButton
             // 
-            this.refreshGroupsButton.Location = new System.Drawing.Point(815, 354);
+            this.refreshGroupsButton.Location = new System.Drawing.Point(658, 354);
             this.refreshGroupsButton.Name = "refreshGroupsButton";
             this.refreshGroupsButton.Size = new System.Drawing.Size(95, 23);
             this.refreshGroupsButton.TabIndex = 15;
@@ -180,12 +180,13 @@
             // 
             // generateReportButton
             // 
-            this.generateReportButton.Location = new System.Drawing.Point(680, 440);
+            this.generateReportButton.Location = new System.Drawing.Point(520, 442);
             this.generateReportButton.Name = "generateReportButton";
-            this.generateReportButton.Size = new System.Drawing.Size(75, 23);
+            this.generateReportButton.Size = new System.Drawing.Size(97, 23);
             this.generateReportButton.TabIndex = 16;
-            this.generateReportButton.Text = "button1";
+            this.generateReportButton.Text = "Generate Report";
             this.generateReportButton.UseVisualStyleBackColor = true;
+            this.generateReportButton.Click += new System.EventHandler(this.generateReportButton_Click);
             // 
             // Form1
             // 

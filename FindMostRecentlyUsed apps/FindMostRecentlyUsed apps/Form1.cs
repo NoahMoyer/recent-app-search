@@ -15,6 +15,7 @@ namespace FindMostRecentlyUsed_apps
     {
         OpenFileDialog openFileDialog = new OpenFileDialog(); //file dialog for selecting applications to look at
         CSVeditor csveditor = new CSVeditor();//editor for file containing app groups
+        List<string> fileReport = new List<string>();
         public string machineName;
         public Form1()
         {
@@ -40,15 +41,18 @@ namespace FindMostRecentlyUsed_apps
         //check selected apps
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            string tempValue;
             for (int i = 0; i < appsListBox.Items.Count; i++)
             {
+                tempValue = "";
                 FileInfo file = new FileInfo(appsListBox.Items[i].ToString());
                 DateTime lasAccessed = file.LastAccessTime;//gets time app was last accessed
                 //lasAccessed.ToString();
-                appsListBox.Items[i] = appsListBox.Items[i].ToString() + " Last accessed  " + lasAccessed.ToString();
-               
+                tempValue = appsListBox.Items[i].ToString() + " Last accessed  " + lasAccessed.ToString();
+                appsListBox.Items[i] = tempValue; //add string to list box
+                fileReport.Add(tempValue); //add string to file report list so we can generate report later when the button is clicked
             }
+            generateReportButton.Enabled = true;
         }
 
         private void currentMachineName_Click(object sender, EventArgs e)
@@ -75,6 +79,8 @@ namespace FindMostRecentlyUsed_apps
                 }
 
             }
+
+            generateReportButton.Enabled = false;   
 
         }
 
@@ -174,6 +180,8 @@ namespace FindMostRecentlyUsed_apps
         private void clearListButton_Click(object sender, EventArgs e)
         {
             appsListBox.Items.Clear();
+            fileReport.Clear();
+            generateReportButton.Enabled = false;   
         }
 
         private void refreshGroupsButton_Click(object sender, EventArgs e)
@@ -206,7 +214,18 @@ namespace FindMostRecentlyUsed_apps
                 Clipboard.SetText(copy_buffer.ToString());
         }
 
-        
+        public static string reportName;
+        //generate report based on apps generated
+        private void generateReportButton_Click(object sender, EventArgs e)
+        {
+            reportName = csveditor.generateReport(fileReport);
+            reportGeneratedPopUp popUp = new reportGeneratedPopUp();
+            DialogResult result = popUp.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                popUp.Dispose();
+            }
+        }
     }
     }
 

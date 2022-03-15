@@ -59,6 +59,18 @@ namespace FindMostRecentlyUsed_apps
             }
         }
 
+        //generate report based on list presented
+        public string generateReport(List<string> report)
+        {
+            string fileReportName = DateTime.Now.ToString();
+            fileReportName = fileReportName.Replace('/', '-');
+            fileReportName = fileReportName.Replace(':', ';');
+            File.WriteAllLines(fileReportName + ".txt", report);
+            return fileReportName;
+
+
+        }
+
         //add new app group
         public void addAppGroup(string newGroupName, List<defaultApp> listOfDefaultApps)
         {
