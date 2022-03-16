@@ -1,2 +1,4 @@
 This program needs to be run as administrator to function properly. Some directories require administrator priviledges.
 csv file is what app groups are based on. Edit it to create your default app groups you want to analyze.
+
+Generating reports is allowed when apps have checked for access time. A report will be made as a text file with the name based on the current date and time.
