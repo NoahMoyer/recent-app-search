@@ -169,7 +169,7 @@ namespace FindMostRecentlyUsed_apps
                     {
                         foreach(defaultApp app in group.getAppsList())
                         {
-                            appsListBox.Items.Add(app.getAppLocation());
+                            appsListBox.Items.Add(app.getAppName() + " " + app.getAppLocation());
                         }
                     }
                 }
