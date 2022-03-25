@@ -42,11 +42,41 @@ namespace FindMostRecentlyUsed_apps
         private void button1_Click(object sender, EventArgs e)
         {
             string tempValue;
+            string appLocaiton;
+            FileInfo file = null;
+            AppGroup selectedAppGroup = null;
+            DateTime lasAccessed = DateTime.Now;
+            foreach (AppGroup group in csveditor.AppGroups)
+            {
+                if (defaultAppsSelectionBox.Text == group.getGroupName())
+                {
+                    selectedAppGroup = group;
+                }
+            }
             for (int i = 0; i < appsListBox.Items.Count; i++)
             {
                 tempValue = "";
-                FileInfo file = new FileInfo(appsListBox.Items[i].ToString());
-                DateTime lasAccessed = file.LastAccessTime;//gets time app was last accessed
+                if (appsListBox.Items[i].ToString()[1] == ':') //checking if the app name is not there
+                {
+                    file = new FileInfo(appsListBox.Items[i].ToString());
+                     lasAccessed = file.LastAccessTime;//gets time app was last accessed
+                }
+                else//if app name is there we need to go based off the app group
+                {
+                    if (selectedAppGroup == null)
+                    {
+                        break;
+                    }
+                    foreach(defaultApp app in selectedAppGroup.defaultApps)
+                    {
+                        if (defaultAppsSelectionBox.Text == selectedAppGroup.getGroupName())
+                        {
+                            file = new FileInfo(app.getAppLocation());
+                             lasAccessed = file.LastAccessTime;//gets time app was last accessed
+                        }
+                    }
+                }
+                
                 //lasAccessed.ToString();
                 tempValue = appsListBox.Items[i].ToString() + " Last accessed  " + lasAccessed.ToString();
                 appsListBox.Items[i] = tempValue; //add string to list box

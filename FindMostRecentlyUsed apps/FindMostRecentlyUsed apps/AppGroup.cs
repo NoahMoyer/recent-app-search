@@ -37,6 +37,6 @@ namespace FindMostRecentlyUsed_apps
             return defaultApps;
         }
         private string groupName;
-        private List<defaultApp> defaultApps = new List<defaultApp>();
+        public List<defaultApp> defaultApps = new List<defaultApp>();
     }
 }
