@@ -1,6 +1,30 @@
 Group name,app name,app location,repeating pattern for infinitely many apps
-IT,Acrobat,C:\Program Files (x86)\Adobe\Acrobat DC\Acrobat\Acrobat.exe,Explorer,C:\Windows\explorer.exe
+AC,Acrobat,C:\Program Files (x86)\Adobe\Acrobat Reader DC\Reader\AcroRd32.exe,Explorer,C:\Windows\explorer.exe
+AS,Explorer,C:\Windows\explorer.exe
+AT,Acrobat,C:\Program Files (x86)\Adobe\Acrobat Reader DC\Reader\AcroRd32.exe,Explorer,C:\Windows\explorer.exe
+CA,Acrobat,C:\Program Files (x86)\Adobe\Acrobat Reader DC\Reader\AcroRd32.exe,Explorer,C:\Windows\explorer.exe
+CC,Acrobat,C:\Program Files (x86)\Adobe\Acrobat Reader DC\Reader\AcroRd32.exe,Explorer,C:\Windows\explorer.exe
+CO,Explorer,C:\Windows\explorer.exe
+CR,Explorer,C:\Windows\explorer.exe
+CS,Explorer,C:\Windows\explorer.exe
+CT,Explorer,C:\Windows\explorer.exe
+CU,Explorer,C:\Windows\explorer.exe
+EN,Explorer,C:\Windows\explorer.exe
+FI,Explorer,C:\Windows\explorer.exe
+FL,Explorer,C:\Windows\explorer.exe
+FM,Explorer,C:\Windows\explorer.exe
+FR,Explorer,C:\Windows\explorer.exe
+HC,Explorer,C:\Windows\explorer.exe
+HR,Explorer,C:\Windows\explorer.exe
+IT,Explorer,C:\Windows\explorer.exe,SCCM,C:\Program Files (x86)\ConfigMgr Console\bin\Microsoft.ConfigurationManagement.exe, LAPS,C:\Program Files\LAPS\AdmPwd.UI.exe, Notepad++, C:\Program Files\Notepad++\notepad++.exe, Task sequence monitor, C:\Program Files (x86)\Citrix\ICA Client\SelfServicePlugin\SelfService.exe, Remote control viewer, C:\Program Files (x86)\ConfigMgr Console\bin\i386\CmRcViewer.exe
+MA,Explorer,C:\Windows\explorer.exe
+PD,Explorer,C:\Windows\explorer.exe
+PK,Explorer,C:\Windows\explorer.exe
+PN,Explorer,C:\Windows\explorer.exe
+PS,Explorer,C:\Windows\explorer.exe
+PW,Explorer,C:\Windows\explorer.exe
+SP,Explorer,C:\Windows\explorer.exe
+TR,Explorer,C:\Windows\explorer.exe
 WT,Explorer,C:\Windows\explorer.exe
-UP,Acrobat,C:\Program Files (x86)\Adobe\Acrobat DC\Acrobat\Acrobat.exe,Explorer,C:\Windows\explorer.exe
-Down,Acrobat,C:\Program Files (x86)\Adobe\Acrobat DC\Acrobat\Acrobat.exe,Explorer,C:\Windows\explorer.exe
-Left,Acrobat,C:\Program Files (x86)\Adobe\Acrobat DC\Acrobat\Acrobat.exe,Explorer,C:\Windows\explorer.exe
+WW,Explorer,C:\Windows\explorer.exe
+Si,Explorer,C:\Windows\explorer.exe
