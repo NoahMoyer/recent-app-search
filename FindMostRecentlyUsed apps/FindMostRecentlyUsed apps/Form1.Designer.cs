@@ -43,6 +43,11 @@
             this.clearListButton = new System.Windows.Forms.Button();
             this.refreshGroupsButton = new System.Windows.Forms.Button();
             this.generateReportButton = new System.Windows.Forms.Button();
+            this.appsGridView = new System.Windows.Forms.DataGridView();
+            this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LocationColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastAccessedColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.appsGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // checkApps
@@ -104,32 +109,38 @@
             // 
             // addAppsButton
             // 
+            this.addAppsButton.Enabled = false;
             this.addAppsButton.Location = new System.Drawing.Point(60, 382);
             this.addAppsButton.Name = "addAppsButton";
             this.addAppsButton.Size = new System.Drawing.Size(150, 23);
             this.addAppsButton.TabIndex = 7;
             this.addAppsButton.Text = "Add apps";
             this.addAppsButton.UseVisualStyleBackColor = true;
+            this.addAppsButton.Visible = false;
             this.addAppsButton.Click += new System.EventHandler(this.addAppsButton_Click);
             // 
             // appsListBox
             // 
+            this.appsListBox.Enabled = false;
             this.appsListBox.FormattingEnabled = true;
-            this.appsListBox.Location = new System.Drawing.Point(60, 91);
+            this.appsListBox.Location = new System.Drawing.Point(60, 492);
             this.appsListBox.Name = "appsListBox";
             this.appsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.appsListBox.Size = new System.Drawing.Size(991, 186);
             this.appsListBox.TabIndex = 8;
+            this.appsListBox.Visible = false;
             this.appsListBox.SelectedIndexChanged += new System.EventHandler(this.appsListBox_SelectedIndexChanged);
             // 
             // removeApp
             // 
+            this.removeApp.Enabled = false;
             this.removeApp.Location = new System.Drawing.Point(60, 411);
             this.removeApp.Name = "removeApp";
             this.removeApp.Size = new System.Drawing.Size(150, 23);
             this.removeApp.TabIndex = 9;
             this.removeApp.Text = "Remove App";
             this.removeApp.UseVisualStyleBackColor = true;
+            this.removeApp.Visible = false;
             this.removeApp.Click += new System.EventHandler(this.removeApp_Click);
             // 
             // defaultAppsSelectionBox
@@ -190,11 +201,40 @@
             this.generateReportButton.UseVisualStyleBackColor = true;
             this.generateReportButton.Click += new System.EventHandler(this.generateReportButton_Click);
             // 
+            // appsGridView
+            // 
+            this.appsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.appsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NameColumn,
+            this.LocationColumn,
+            this.LastAccessedColumn});
+            this.appsGridView.Location = new System.Drawing.Point(60, 91);
+            this.appsGridView.Name = "appsGridView";
+            this.appsGridView.Size = new System.Drawing.Size(991, 195);
+            this.appsGridView.TabIndex = 17;
+            this.appsGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // NameColumn
+            // 
+            this.NameColumn.HeaderText = "Name";
+            this.NameColumn.Name = "NameColumn";
+            // 
+            // LocationColumn
+            // 
+            this.LocationColumn.HeaderText = "Location";
+            this.LocationColumn.Name = "LocationColumn";
+            // 
+            // LastAccessedColumn
+            // 
+            this.LastAccessedColumn.HeaderText = "Last Accessed";
+            this.LastAccessedColumn.Name = "LastAccessedColumn";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1172, 497);
+            this.ClientSize = new System.Drawing.Size(1172, 538);
+            this.Controls.Add(this.appsGridView);
             this.Controls.Add(this.generateReportButton);
             this.Controls.Add(this.refreshGroupsButton);
             this.Controls.Add(this.clearListButton);
@@ -213,6 +253,7 @@
             this.Name = "Form1";
             this.Text = "Recent Application Usage Analyzer";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.appsGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -234,6 +275,10 @@
         private System.Windows.Forms.Button clearListButton;
         private System.Windows.Forms.Button refreshGroupsButton;
         private System.Windows.Forms.Button generateReportButton;
+        private System.Windows.Forms.DataGridView appsGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LocationColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LastAccessedColumn;
     }
 }
 

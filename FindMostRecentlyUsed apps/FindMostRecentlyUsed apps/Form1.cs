@@ -46,7 +46,7 @@ namespace FindMostRecentlyUsed_apps
             //string appLocaiton;
             FileInfo file = null;
             AppGroup selectedAppGroup = null;
-            DateTime lasAccessed = DateTime.Parse("6/12/1997 9:00:00 AM");
+            DateTime lastAccessed = DateTime.Parse("6/12/1997 9:00:00 AM");
             foreach (AppGroup group in csveditor.AppGroups)
             {
                 if (defaultAppsSelectionBox.Text == group.getGroupName())
@@ -57,13 +57,6 @@ namespace FindMostRecentlyUsed_apps
             for (int i = 0; i < appsListBox.Items.Count; i++)
             {
                 tempValue = "";
-                //if (appsListBox.Items[i].ToString()[1] == ':') //checking if the app name is not there
-                //{
-                //    file = new FileInfo(appsListBox.Items[i].ToString());
-                //     lasAccessed = file.LastAccessTime;//gets time app was last accessed
-                //}
-                //else//if app name is there we need to go based off the app group
-                //{
                     if (selectedAppGroup == null)
                     {
                         break;
@@ -73,13 +66,32 @@ namespace FindMostRecentlyUsed_apps
                         if (appsListBox.Items[i].ToString().StartsWith(app.getAppName())) 
                         {
                             file = new FileInfo(app.getAppLocation());
-                             lasAccessed = file.LastAccessTime;//gets time app was last accessed
+                            if (file.Exists)
+                            {
+                                lastAccessed = file.LastAccessTime;//gets time app was last accessed
+                            }
+                            else if (!file.Exists)
+                            {
+                                lastAccessed = DateTime.Parse("6/12/1400 9:00:00 AM");
+                            }
                         }
                     }
-                // }
-                //lasAccessed.ToString();
-                tempValue = appsListBox.Items[i].ToString() + " Last accessed  " + lasAccessed.ToString();
+                
+                tempValue = appsListBox.Items[i].ToString() + " Last accessed  " + lastAccessed.ToString();
                 appsListBox.Items[i] = tempValue; //add string to list box
+
+                //using gridViewBox for better data veiwing
+                               
+                if (lastAccessed.ToString() == "6/12/1400 9:00:00 AM")
+                {
+                    appsGridView.Rows[i].Cells[2].Value = "App not installed/not accessible";
+                }
+                else
+                {
+                    appsGridView.Rows[i].Cells[2].Value = lastAccessed.ToString();
+                }
+                
+
                 fileReport.Add(tempValue); //add string to file report list so we can generate report later when the button is clicked
             }
             generateReportButton.Enabled = true;
@@ -136,6 +148,7 @@ namespace FindMostRecentlyUsed_apps
 
             //would like to be able to check computers over the network. Will attempt that here by changing location from C: to \\machinename\location
             appsListBox.Items.Clear();
+            appsGridView.Rows.Clear();
             foreach(AppGroup group in csveditor.AppGroups)
             {
                 if (group.getGroupName() == defaultAppsSelectionBox.Text)
@@ -155,6 +168,7 @@ namespace FindMostRecentlyUsed_apps
         {
             //we will want to reset the app locations and list
             appsListBox.Items.Clear();
+            appsGridView.Rows.Clear();
             refreshGroups();
 
             machineName = Environment.MachineName;
@@ -191,9 +205,10 @@ namespace FindMostRecentlyUsed_apps
                 //foreach (string app in openFileDialog.FileNames)
                 //{
                     appsListBox.Items.Add(openFileDialog.FileName);
-                //}
+                   
             //}
-           
+            //}
+
         }
 
         private void removeApp_Click(object sender, EventArgs e)
@@ -221,6 +236,11 @@ namespace FindMostRecentlyUsed_apps
                         foreach (defaultApp app in group.getAppsList())
                         {
                             appsListBox.Items.Add(app.getAppName() + " " + app.getAppLocation());
+                            
+                            //using gridViewBox for better data veiwing
+                            int n = appsGridView.Rows.Add();
+                            appsGridView.Rows[n].Cells[0].Value = app.getAppName();
+                            appsGridView.Rows[n].Cells[1].Value = app.getAppLocation();
                         }
                     }
                 }
@@ -231,6 +251,7 @@ namespace FindMostRecentlyUsed_apps
         private void clearListButton_Click(object sender, EventArgs e)
         {
             appsListBox.Items.Clear();
+            appsGridView.Rows.Clear();
             fileReport.Clear();
             generateReportButton.Enabled = false;   
         }
@@ -291,6 +312,11 @@ namespace FindMostRecentlyUsed_apps
         private void defaultAppsSelectionBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.AcceptButton = populateListButton;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
     }
