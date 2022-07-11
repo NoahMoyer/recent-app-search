@@ -25,8 +25,23 @@ namespace FindMostRecentlyUsed_apps
         {
             return appName;
         }
-       public string appName;
+        public string getprefetchName()
+        {
+            return prefetchName;
+        }
+        public string getrunCount()
+        {
+            return runCount;
+        }
+        public string getlastRunTime()
+        {
+            return lastRunTime;
+        }
+        public string appName;
        public string appLocation;
+        public string prefetchName;
+        public string runCount;
+        public string lastRunTime;
         
     }
 }
