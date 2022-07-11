@@ -8,10 +8,14 @@ namespace FindMostRecentlyUsed_apps
 {
     internal class defaultApp
     {
-       public defaultApp(string newAppName, string newAppLocation)
+        public defaultApp(string newAppName, string newAppLocation)
         {
             appName = newAppName;
             appLocation = newAppLocation;
+        }
+        public void setAppLocation(string newLocation)
+        {
+            appLocation = newLocation;
         }
         public string getAppLocation()
         {

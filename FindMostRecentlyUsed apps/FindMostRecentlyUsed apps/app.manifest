@@ -19,7 +19,7 @@
             compatibility.
         -->
 		  <!-- this option will cause the app to ask for admin privileges to run. We need them for the app to work-->
-		  <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+		  <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
         
       </requestedPrivileges>
     </security>

@@ -39,7 +39,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>signedNoahMoyer.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>signednpmoyera.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
@@ -100,6 +100,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="signedNoahMoyer.pfx" />
+    <None Include="signednpmoyera.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

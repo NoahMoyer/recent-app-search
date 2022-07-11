@@ -41,11 +41,12 @@ namespace FindMostRecentlyUsed_apps
         //check selected apps
         private void button1_Click(object sender, EventArgs e)
         {
+            this.AcceptButton = generateReportButton;
             string tempValue;
             //string appLocaiton;
             FileInfo file = null;
             AppGroup selectedAppGroup = null;
-            DateTime lasAccessed = DateTime.Now;
+            DateTime lasAccessed = DateTime.Parse("6/12/1997 9:00:00 AM");
             foreach (AppGroup group in csveditor.AppGroups)
             {
                 if (defaultAppsSelectionBox.Text == group.getGroupName())
@@ -69,14 +70,13 @@ namespace FindMostRecentlyUsed_apps
                     }
                     foreach(defaultApp app in selectedAppGroup.defaultApps)
                     {
-                        if (defaultAppsSelectionBox.Text == selectedAppGroup.getGroupName())
+                        if (appsListBox.Items[i].ToString().StartsWith(app.getAppName())) 
                         {
                             file = new FileInfo(app.getAppLocation());
                              lasAccessed = file.LastAccessTime;//gets time app was last accessed
                         }
                     }
-               // }
-                
+                // }
                 //lasAccessed.ToString();
                 tempValue = appsListBox.Items[i].ToString() + " Last accessed  " + lasAccessed.ToString();
                 appsListBox.Items[i] = tempValue; //add string to list box
@@ -133,11 +133,30 @@ namespace FindMostRecentlyUsed_apps
                 }
                
             }
+
+            //would like to be able to check computers over the network. Will attempt that here by changing location from C: to \\machinename\location
+            appsListBox.Items.Clear();
+            foreach(AppGroup group in csveditor.AppGroups)
+            {
+                if (group.getGroupName() == defaultAppsSelectionBox.Text)
+                {
+                    foreach (defaultApp app in group.defaultApps)
+                    {
+                        app.setAppLocation("\\\\" + machineName + "\\C$" + app.getAppLocation().Substring(2));
+                        //appsListBox.Items.Add(app.getAppName() + " " + app.getAppLocation());
+                    }
+                }
+            }
+            //this should change the locations to the network based location of another machine
         }
 
         //reset machine name to current machine
         private void resetMachineNameButton_Click(object sender, EventArgs e)
         {
+            //we will want to reset the app locations and list
+            appsListBox.Items.Clear();
+            refreshGroups();
+
             machineName = Environment.MachineName;
             currentMachineNameLabel.Text = "Current machine name: " + machineName; //load current machine name
             
@@ -190,6 +209,7 @@ namespace FindMostRecentlyUsed_apps
 
         private void populateListButton_Click(object sender, EventArgs e)
         {
+            this.AcceptButton = checkApps;
             //populate app list based on selected group name
             if (defaultAppsSelectionBox.SelectedItem != null)
             {
@@ -197,7 +217,8 @@ namespace FindMostRecentlyUsed_apps
                 {
                     if (group.getGroupName() == defaultAppsSelectionBox.SelectedItem.ToString())
                     {
-                        foreach(defaultApp app in group.getAppsList())
+                        
+                        foreach (defaultApp app in group.getAppsList())
                         {
                             appsListBox.Items.Add(app.getAppName() + " " + app.getAppLocation());
                         }
@@ -215,6 +236,11 @@ namespace FindMostRecentlyUsed_apps
         }
 
         private void refreshGroupsButton_Click(object sender, EventArgs e)
+        {
+            refreshGroups();
+        }
+
+        public void refreshGroups()
         {
             //clear list before remaking it
             defaultAppsSelectionBox.Items.Clear();
@@ -255,6 +281,16 @@ namespace FindMostRecentlyUsed_apps
             {
                 popUp.Dispose();
             }
+        }
+
+        private void machineNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            this.AcceptButton = changeMachineNameButton;
+        }
+
+        private void defaultAppsSelectionBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.AcceptButton = populateListButton;
         }
     }
     }

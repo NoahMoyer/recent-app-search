@@ -80,6 +80,7 @@
             this.machineNameTextBox.Name = "machineNameTextBox";
             this.machineNameTextBox.Size = new System.Drawing.Size(150, 20);
             this.machineNameTextBox.TabIndex = 4;
+            this.machineNameTextBox.TextChanged += new System.EventHandler(this.machineNameTextBox_TextChanged);
             // 
             // changeMachineNameButton
             // 
@@ -138,6 +139,7 @@
             this.defaultAppsSelectionBox.Name = "defaultAppsSelectionBox";
             this.defaultAppsSelectionBox.Size = new System.Drawing.Size(121, 21);
             this.defaultAppsSelectionBox.TabIndex = 11;
+            this.defaultAppsSelectionBox.SelectedIndexChanged += new System.EventHandler(this.defaultAppsSelectionBox_SelectedIndexChanged);
             // 
             // defaultAppGroupsLabel
             // 
@@ -192,7 +194,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1172, 568);
+            this.ClientSize = new System.Drawing.Size(1172, 497);
             this.Controls.Add(this.generateReportButton);
             this.Controls.Add(this.refreshGroupsButton);
             this.Controls.Add(this.clearListButton);
