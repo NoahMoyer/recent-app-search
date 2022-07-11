@@ -47,6 +47,9 @@
             this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LocationColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LastAccessedColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prefetchname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Runcounter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Lastruntime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.appsGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -207,7 +210,10 @@
             this.appsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NameColumn,
             this.LocationColumn,
-            this.LastAccessedColumn});
+            this.LastAccessedColumn,
+            this.Prefetchname,
+            this.Runcounter,
+            this.Lastruntime});
             this.appsGridView.Location = new System.Drawing.Point(60, 91);
             this.appsGridView.Name = "appsGridView";
             this.appsGridView.Size = new System.Drawing.Size(991, 195);
@@ -228,6 +234,21 @@
             // 
             this.LastAccessedColumn.HeaderText = "Last Accessed";
             this.LastAccessedColumn.Name = "LastAccessedColumn";
+            // 
+            // Prefetchname
+            // 
+            this.Prefetchname.HeaderText = "Prefetch Name";
+            this.Prefetchname.Name = "Prefetchname";
+            // 
+            // Runcounter
+            // 
+            this.Runcounter.HeaderText = "Run Counter";
+            this.Runcounter.Name = "Runcounter";
+            // 
+            // Lastruntime
+            // 
+            this.Lastruntime.HeaderText = "Last Run Time";
+            this.Lastruntime.Name = "Lastruntime";
             // 
             // Form1
             // 
@@ -279,6 +300,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn LocationColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn LastAccessedColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Prefetchname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Runcounter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Lastruntime;
     }
 }
 

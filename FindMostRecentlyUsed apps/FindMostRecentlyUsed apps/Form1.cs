@@ -17,6 +17,8 @@ namespace FindMostRecentlyUsed_apps
         CSVeditor csveditor = new CSVeditor();//editor for file containing app groups
         List<string> fileReport = new List<string>();
         public string machineName;
+        PrefetchParser prefetchParser = new PrefetchParser();
+        string prefetchReportName = "prefetchReport.csv";
         public Form1()
         {
             InitializeComponent();
@@ -34,8 +36,9 @@ namespace FindMostRecentlyUsed_apps
                 File.Create("defaultAppGroups.csv");
             }
 
+            //need to generate report from WinPrefetchView on prefetch files and parse the data
+            prefetchParser.runPrefetchReportCommand(prefetchReportName);
 
-            
         }
 
         //check selected apps
@@ -246,6 +249,8 @@ namespace FindMostRecentlyUsed_apps
                 }
 
             }
+
+            
         }
 
         private void clearListButton_Click(object sender, EventArgs e)
@@ -279,6 +284,9 @@ namespace FindMostRecentlyUsed_apps
             {
                 File.Create("defaultAppGroups.csv");
             }
+
+            //need to generate report from WinPrefetchView on prefetch files and parse the data
+            prefetchParser.runPrefetchReportCommand(prefetchReportName);
         }
 
         //kind of janky way to copy output to clipboard
