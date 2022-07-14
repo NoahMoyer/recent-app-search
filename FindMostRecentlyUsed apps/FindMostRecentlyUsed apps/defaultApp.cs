@@ -8,40 +8,18 @@ namespace FindMostRecentlyUsed_apps
 {
     internal class defaultApp
     {
-        public defaultApp(string newAppName, string newAppLocation)
+        public defaultApp(string newAppName, string newAppLocation, string newPrefetchName)
         {
             appName = newAppName;
             appLocation = newAppLocation;
+            prefetchName = newPrefetchName;
         }
-        public void setAppLocation(string newLocation)
-        {
-            appLocation = newLocation;
-        }
-        public string getAppLocation()
-        {
-            return appLocation;
-        }
-        public string getAppName()
-        {
-            return appName;
-        }
-        public string getprefetchName()
-        {
-            return prefetchName;
-        }
-        public string getrunCount()
-        {
-            return runCount;
-        }
-        public string getlastRunTime()
-        {
-            return lastRunTime;
-        }
-        public string appName;
-       public string appLocation;
-        public string prefetchName;
-        public string runCount;
-        public string lastRunTime;
-        
+
+        public string appName { get; private set; }
+       public string appLocation { get; set; }
+        public string prefetchName { get; set; }
+        public string runCount { get; set; }
+        public string lastRunTime { get; set; }
+
     }
 }

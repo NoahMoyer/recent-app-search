@@ -17,8 +17,8 @@ namespace FindMostRecentlyUsed_apps
         CSVeditor csveditor = new CSVeditor();//editor for file containing app groups
         List<string> fileReport = new List<string>();
         public string machineName;
-        PrefetchParser prefetchParser = new PrefetchParser();
         string prefetchReportName = "prefetchReport.csv";
+        AppGroup selectedAppGroup;
         public Form1()
         {
             InitializeComponent();
@@ -37,7 +37,10 @@ namespace FindMostRecentlyUsed_apps
             }
 
             //need to generate report from WinPrefetchView on prefetch files and parse the data
-            prefetchParser.runPrefetchReportCommand(prefetchReportName);
+            csveditor.runPrefetchReportCommand(prefetchReportName);
+
+            
+
 
         }
 
@@ -48,8 +51,13 @@ namespace FindMostRecentlyUsed_apps
             string tempValue;
             //string appLocaiton;
             FileInfo file = null;
-            AppGroup selectedAppGroup = null;
-            DateTime lastAccessed = DateTime.Parse("6/12/1997 9:00:00 AM");
+            DateTime lastAccessed = DateTime.Parse("6/12/1997 9:00:00 AM");//set initial value
+            string runCount = "";
+            string lastRunDate = "";
+
+            //getting data from prefetch report
+            csveditor.readPrefetcCSVFile(prefetchReportName, ref selectedAppGroup.defaultApps);
+            //selecting app group
             foreach (AppGroup group in csveditor.AppGroups)
             {
                 if (defaultAppsSelectionBox.Text == group.getGroupName())
@@ -57,31 +65,40 @@ namespace FindMostRecentlyUsed_apps
                     selectedAppGroup = group;
                 }
             }
-            for (int i = 0; i < appsListBox.Items.Count; i++)
+
+            string appNameInList;
+            //loop through apps in display
+            for (int i = 0; i < appsGridView.Rows.Count - 1; i++)
             {
                 tempValue = "";
+                //appNameInList = appsGridView.Rows[i].Cells[0].Value.ToString();
                     if (selectedAppGroup == null)
                     {
                         break;
                     }
+                    //loop through defaultApps list in selected group
                     foreach(defaultApp app in selectedAppGroup.defaultApps)
                     {
-                        if (appsListBox.Items[i].ToString().StartsWith(app.getAppName())) 
+                        //do this once we get to the app in the display that mathces the app in the group
+                        if (appsGridView.Rows[i].Cells[0].Value.ToString() == app.appName) 
                         {
-                            file = new FileInfo(app.getAppLocation());
+                            file = new FileInfo(app.appLocation);
                             if (file.Exists)
                             {
                                 lastAccessed = file.LastAccessTime;//gets time app was last accessed
+                                
                             }
                             else if (!file.Exists)
                             {
                                 lastAccessed = DateTime.Parse("6/12/1400 9:00:00 AM");
                             }
-                        }
+                        //TODO: need to get data from prefetchCSVfile
+                        runCount = app.runCount;
+                        lastRunDate = app.lastRunTime;
+                    }
                     }
                 
-                tempValue = appsListBox.Items[i].ToString() + " Last accessed  " + lastAccessed.ToString();
-                appsListBox.Items[i] = tempValue; //add string to list box
+                
 
                 //using gridViewBox for better data veiwing
                                
@@ -92,11 +109,18 @@ namespace FindMostRecentlyUsed_apps
                 else
                 {
                     appsGridView.Rows[i].Cells[2].Value = lastAccessed.ToString();
-                }
-                
+                    appsGridView.Rows[i].Cells[4].Value = runCount;
+                    appsGridView.Rows[i].Cells[5].Value = lastRunDate;
 
+                }
+
+
+                //chandge entry to add access time to the end of the line displaying the app
+                tempValue = appsGridView.Rows[i].Cells[0].Value + ",Last accessed," + appsGridView.Rows[i].Cells[2].Value.ToString() + ",Run count," + runCount + ",Last run dates," + lastRunDate;
+                //add the same line from the display to the report
                 fileReport.Add(tempValue); //add string to file report list so we can generate report later when the button is clicked
             }
+            //allow report to be generated
             generateReportButton.Enabled = true;
         }
 
@@ -121,6 +145,7 @@ namespace FindMostRecentlyUsed_apps
 
                     //defaultAppsSelectionBox.SelectedItem = defaultAppsSelectionBox.FindString(group.getGroupName());
                     defaultAppsSelectionBox.Text = group.getGroupName();
+                    selectedAppGroup = group;
                 }
 
             }
@@ -129,6 +154,8 @@ namespace FindMostRecentlyUsed_apps
 
         }
 
+
+        //TODO: need to make the prefetch file report able to access prefetch files over the network
         //change current machine to typed one
         private void changeMachineNameButton_Click(object sender, EventArgs e)
         {
@@ -145,6 +172,7 @@ namespace FindMostRecentlyUsed_apps
 
                 //defaultAppsSelectionBox.SelectedItem = defaultAppsSelectionBox.FindString(group.getGroupName());
                      defaultAppsSelectionBox.Text = group.getGroupName();
+                     selectedAppGroup = group;
                 }
                
             }
@@ -158,7 +186,7 @@ namespace FindMostRecentlyUsed_apps
                 {
                     foreach (defaultApp app in group.defaultApps)
                     {
-                        app.setAppLocation("\\\\" + machineName + "\\C$" + app.getAppLocation().Substring(2));
+                        app.appLocation = "\\\\" + machineName + "\\C$" + app.appLocation.Substring(2);
                         //appsListBox.Items.Add(app.getAppName() + " " + app.getAppLocation());
                     }
                 }
@@ -186,6 +214,7 @@ namespace FindMostRecentlyUsed_apps
 
                     //defaultAppsSelectionBox.SelectedItem = defaultAppsSelectionBox.FindString(group.getGroupName());
                     defaultAppsSelectionBox.Text = group.getGroupName();
+                    selectedAppGroup = group;
                 }
 
             }
@@ -238,12 +267,13 @@ namespace FindMostRecentlyUsed_apps
                         
                         foreach (defaultApp app in group.getAppsList())
                         {
-                            appsListBox.Items.Add(app.getAppName() + " " + app.getAppLocation());
+                            appsListBox.Items.Add(app.appName + " " + app.appLocation);
                             
                             //using gridViewBox for better data veiwing
                             int n = appsGridView.Rows.Add();
-                            appsGridView.Rows[n].Cells[0].Value = app.getAppName();
-                            appsGridView.Rows[n].Cells[1].Value = app.getAppLocation();
+                            appsGridView.Rows[n].Cells[0].Value = app.appName;
+                            appsGridView.Rows[n].Cells[1].Value = app.appLocation;
+                            appsGridView.Rows[n].Cells[3].Value = app.prefetchName;
                         }
                     }
                 }
@@ -286,7 +316,7 @@ namespace FindMostRecentlyUsed_apps
             }
 
             //need to generate report from WinPrefetchView on prefetch files and parse the data
-            prefetchParser.runPrefetchReportCommand(prefetchReportName);
+            csveditor.runPrefetchReportCommand(prefetchReportName);
         }
 
         //kind of janky way to copy output to clipboard
