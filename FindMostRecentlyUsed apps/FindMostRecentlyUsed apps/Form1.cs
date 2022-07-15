@@ -36,8 +36,7 @@ namespace FindMostRecentlyUsed_apps
                 File.Create("defaultAppGroups.csv");
             }
 
-            //need to generate report from WinPrefetchView on prefetch files and parse the data
-            csveditor.runPrefetchReportCommand(prefetchReportName);
+            
 
             
 
@@ -56,7 +55,7 @@ namespace FindMostRecentlyUsed_apps
             string lastRunDate = "";
 
             //getting data from prefetch report
-            csveditor.readPrefetcCSVFile(prefetchReportName, ref selectedAppGroup.defaultApps);
+            csveditor.readPrefetcCSVFile(machineName + prefetchReportName, ref selectedAppGroup.defaultApps);
             //selecting app group
             foreach (AppGroup group in csveditor.AppGroups)
             {
@@ -116,7 +115,8 @@ namespace FindMostRecentlyUsed_apps
 
 
                 //chandge entry to add access time to the end of the line displaying the app
-                tempValue = appsGridView.Rows[i].Cells[0].Value + ",Last accessed," + appsGridView.Rows[i].Cells[2].Value.ToString() + ",Run count," + runCount + ",Last run dates," + lastRunDate;
+                const string quote = "\"";
+                tempValue = appsGridView.Rows[i].Cells[0].Value + ",Last accessed," + appsGridView.Rows[i].Cells[2].Value.ToString() + ",Run count," + quote + runCount + quote + ",Last run dates," + quote + lastRunDate + quote;
                 //add the same line from the display to the report
                 fileReport.Add(tempValue); //add string to file report list so we can generate report later when the button is clicked
             }
@@ -150,7 +150,10 @@ namespace FindMostRecentlyUsed_apps
 
             }
 
-            generateReportButton.Enabled = false;   
+            generateReportButton.Enabled = false;
+
+            //need to generate report from WinPrefetchView on prefetch files and parse the data
+            csveditor.runPrefetchReportCommand(machineName + prefetchReportName);
 
         }
 
@@ -178,9 +181,8 @@ namespace FindMostRecentlyUsed_apps
             }
 
             //would like to be able to check computers over the network. Will attempt that here by changing location from C: to \\machinename\location
-            appsListBox.Items.Clear();
-            appsGridView.Rows.Clear();
-            foreach(AppGroup group in csveditor.AppGroups)
+            clearData();
+            foreach (AppGroup group in csveditor.AppGroups)
             {
                 if (group.getGroupName() == defaultAppsSelectionBox.Text)
                 {
@@ -192,14 +194,15 @@ namespace FindMostRecentlyUsed_apps
                 }
             }
             //this should change the locations to the network based location of another machine
+
+            csveditor.runPrefetchReportCommandOverNetwork(machineName + prefetchReportName, machineName);
         }
 
         //reset machine name to current machine
         private void resetMachineNameButton_Click(object sender, EventArgs e)
         {
             //we will want to reset the app locations and list
-            appsListBox.Items.Clear();
-            appsGridView.Rows.Clear();
+            clearData();
             refreshGroups();
 
             machineName = Environment.MachineName;
@@ -218,6 +221,7 @@ namespace FindMostRecentlyUsed_apps
                 }
 
             }
+            csveditor.runPrefetchReportCommand(machineName + reportName);
         }
 
         //allow user to add apps to look at
@@ -285,10 +289,15 @@ namespace FindMostRecentlyUsed_apps
 
         private void clearListButton_Click(object sender, EventArgs e)
         {
+            clearData();
+        }
+
+        public void clearData()
+        {
             appsListBox.Items.Clear();
             appsGridView.Rows.Clear();
             fileReport.Clear();
-            generateReportButton.Enabled = false;   
+            generateReportButton.Enabled = false;
         }
 
         private void refreshGroupsButton_Click(object sender, EventArgs e)
@@ -316,7 +325,7 @@ namespace FindMostRecentlyUsed_apps
             }
 
             //need to generate report from WinPrefetchView on prefetch files and parse the data
-            csveditor.runPrefetchReportCommand(prefetchReportName);
+            csveditor.runPrefetchReportCommand(machineName + prefetchReportName);
         }
 
         //kind of janky way to copy output to clipboard
@@ -333,7 +342,7 @@ namespace FindMostRecentlyUsed_apps
         //generate report based on apps generated
         private void generateReportButton_Click(object sender, EventArgs e)
         {
-            reportName = csveditor.generateReport(fileReport);
+            reportName = csveditor.generateReport(fileReport, machineName);
             reportGeneratedPopUp popUp = new reportGeneratedPopUp();
             DialogResult result = popUp.ShowDialog();
             if (result == DialogResult.OK)

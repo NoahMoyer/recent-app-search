@@ -26,5 +26,10 @@ namespace FindMostRecentlyUsed_apps
         {
             reportNameLabel.Text = Form1.reportName;
         }
+
+        private void reportGenerated_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

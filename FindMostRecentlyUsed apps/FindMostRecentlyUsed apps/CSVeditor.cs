@@ -61,11 +61,12 @@ namespace FindMostRecentlyUsed_apps
         }
 
         //generate report based on list presented
-        public string generateReport(List<string> report)
+        public string generateReport(List<string> report, string machineName)
         {
             string fileReportName = DateTime.Now.ToString();
             fileReportName = fileReportName.Replace('/', '-');
             fileReportName = fileReportName.Replace(':', ';');
+            fileReportName = machineName + " " + fileReportName;
             File.WriteAllLines(fileReportName + ".csv", report);
             return fileReportName;
 
@@ -120,6 +121,21 @@ namespace FindMostRecentlyUsed_apps
             startInfo.FileName = "cmd.exe";
             const string quote = "\"";
             startInfo.Arguments = "/C WinPrefetchView.exe /scomma " + quote + reportFileName + quote + " /sort " + quote + "Filename" + quote;
+            startInfo.Verb = "runas";
+            process.StartInfo = startInfo;
+            process.Start();
+        }
+
+        //calls WinPrefetchView.exe to generate a report on the prefetch files on the current system
+        public void runPrefetchReportCommandOverNetwork(string reportFileName, string machineName)
+        {
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            startInfo.FileName = "cmd.exe";
+            const string quote = "\"";
+            string arg = "/C WinPrefetchView.exe /folder \\\\" + machineName + "\\C$\\Windows\\prefetch /scomma " + quote + reportFileName + quote + " /sort " + quote + "Filename" + quote;
+            startInfo.Arguments = arg;
             startInfo.Verb = "runas";
             process.StartInfo = startInfo;
             process.Start();

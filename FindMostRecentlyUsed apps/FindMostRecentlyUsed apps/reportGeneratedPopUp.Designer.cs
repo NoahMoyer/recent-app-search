@@ -41,6 +41,7 @@
             this.reportGenerated.Size = new System.Drawing.Size(104, 13);
             this.reportGenerated.TabIndex = 0;
             this.reportGenerated.Text = "Report generated as";
+            this.reportGenerated.Click += new System.EventHandler(this.reportGenerated_Click);
             // 
             // okayButton
             // 
