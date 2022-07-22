@@ -55,7 +55,8 @@
             // 
             // checkApps
             // 
-            this.checkApps.Location = new System.Drawing.Point(60, 440);
+            this.checkApps.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkApps.Location = new System.Drawing.Point(60, 463);
             this.checkApps.Name = "checkApps";
             this.checkApps.Size = new System.Drawing.Size(150, 23);
             this.checkApps.TabIndex = 1;
@@ -65,8 +66,9 @@
             // 
             // currentMachineNameLabel
             // 
+            this.currentMachineNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.currentMachineNameLabel.AutoSize = true;
-            this.currentMachineNameLabel.Location = new System.Drawing.Point(57, 326);
+            this.currentMachineNameLabel.Location = new System.Drawing.Point(57, 349);
             this.currentMachineNameLabel.Name = "currentMachineNameLabel";
             this.currentMachineNameLabel.Size = new System.Drawing.Size(119, 13);
             this.currentMachineNameLabel.TabIndex = 2;
@@ -84,7 +86,8 @@
             // 
             // machineNameTextBox
             // 
-            this.machineNameTextBox.Location = new System.Drawing.Point(60, 354);
+            this.machineNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.machineNameTextBox.Location = new System.Drawing.Point(60, 377);
             this.machineNameTextBox.Name = "machineNameTextBox";
             this.machineNameTextBox.Size = new System.Drawing.Size(150, 20);
             this.machineNameTextBox.TabIndex = 4;
@@ -92,7 +95,8 @@
             // 
             // changeMachineNameButton
             // 
-            this.changeMachineNameButton.Location = new System.Drawing.Point(216, 355);
+            this.changeMachineNameButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.changeMachineNameButton.Location = new System.Drawing.Point(215, 374);
             this.changeMachineNameButton.Name = "changeMachineNameButton";
             this.changeMachineNameButton.Size = new System.Drawing.Size(142, 23);
             this.changeMachineNameButton.TabIndex = 5;
@@ -102,7 +106,8 @@
             // 
             // resetMachineNameButton
             // 
-            this.resetMachineNameButton.Location = new System.Drawing.Point(364, 355);
+            this.resetMachineNameButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.resetMachineNameButton.Location = new System.Drawing.Point(363, 374);
             this.resetMachineNameButton.Name = "resetMachineNameButton";
             this.resetMachineNameButton.Size = new System.Drawing.Size(126, 23);
             this.resetMachineNameButton.TabIndex = 6;
@@ -112,8 +117,9 @@
             // 
             // addAppsButton
             // 
+            this.addAppsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.addAppsButton.Enabled = false;
-            this.addAppsButton.Location = new System.Drawing.Point(60, 382);
+            this.addAppsButton.Location = new System.Drawing.Point(60, 405);
             this.addAppsButton.Name = "addAppsButton";
             this.addAppsButton.Size = new System.Drawing.Size(150, 23);
             this.addAppsButton.TabIndex = 7;
@@ -126,7 +132,7 @@
             // 
             this.appsListBox.Enabled = false;
             this.appsListBox.FormattingEnabled = true;
-            this.appsListBox.Location = new System.Drawing.Point(60, 492);
+            this.appsListBox.Location = new System.Drawing.Point(60, 520);
             this.appsListBox.Name = "appsListBox";
             this.appsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.appsListBox.Size = new System.Drawing.Size(991, 186);
@@ -136,8 +142,9 @@
             // 
             // removeApp
             // 
+            this.removeApp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.removeApp.Enabled = false;
-            this.removeApp.Location = new System.Drawing.Point(60, 411);
+            this.removeApp.Location = new System.Drawing.Point(60, 434);
             this.removeApp.Name = "removeApp";
             this.removeApp.Size = new System.Drawing.Size(150, 23);
             this.removeApp.TabIndex = 9;
@@ -148,8 +155,9 @@
             // 
             // defaultAppsSelectionBox
             // 
+            this.defaultAppsSelectionBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.defaultAppsSelectionBox.FormattingEnabled = true;
-            this.defaultAppsSelectionBox.Location = new System.Drawing.Point(520, 357);
+            this.defaultAppsSelectionBox.Location = new System.Drawing.Point(532, 376);
             this.defaultAppsSelectionBox.Name = "defaultAppsSelectionBox";
             this.defaultAppsSelectionBox.Size = new System.Drawing.Size(121, 21);
             this.defaultAppsSelectionBox.TabIndex = 11;
@@ -157,8 +165,9 @@
             // 
             // defaultAppGroupsLabel
             // 
+            this.defaultAppGroupsLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.defaultAppGroupsLabel.AutoSize = true;
-            this.defaultAppGroupsLabel.Location = new System.Drawing.Point(520, 326);
+            this.defaultAppGroupsLabel.Location = new System.Drawing.Point(532, 349);
             this.defaultAppGroupsLabel.Name = "defaultAppGroupsLabel";
             this.defaultAppGroupsLabel.Size = new System.Drawing.Size(97, 13);
             this.defaultAppGroupsLabel.TabIndex = 12;
@@ -166,7 +175,8 @@
             // 
             // populateListButton
             // 
-            this.populateListButton.Location = new System.Drawing.Point(520, 384);
+            this.populateListButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.populateListButton.Location = new System.Drawing.Point(532, 407);
             this.populateListButton.Name = "populateListButton";
             this.populateListButton.Size = new System.Drawing.Size(97, 23);
             this.populateListButton.TabIndex = 13;
@@ -176,7 +186,8 @@
             // 
             // clearListButton
             // 
-            this.clearListButton.Location = new System.Drawing.Point(520, 413);
+            this.clearListButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.clearListButton.Location = new System.Drawing.Point(532, 436);
             this.clearListButton.Name = "clearListButton";
             this.clearListButton.Size = new System.Drawing.Size(97, 23);
             this.clearListButton.TabIndex = 14;
@@ -186,7 +197,8 @@
             // 
             // refreshGroupsButton
             // 
-            this.refreshGroupsButton.Location = new System.Drawing.Point(658, 354);
+            this.refreshGroupsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.refreshGroupsButton.Location = new System.Drawing.Point(669, 376);
             this.refreshGroupsButton.Name = "refreshGroupsButton";
             this.refreshGroupsButton.Size = new System.Drawing.Size(95, 23);
             this.refreshGroupsButton.TabIndex = 15;
@@ -196,7 +208,8 @@
             // 
             // generateReportButton
             // 
-            this.generateReportButton.Location = new System.Drawing.Point(520, 442);
+            this.generateReportButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.generateReportButton.Location = new System.Drawing.Point(532, 465);
             this.generateReportButton.Name = "generateReportButton";
             this.generateReportButton.Size = new System.Drawing.Size(97, 23);
             this.generateReportButton.TabIndex = 16;
@@ -206,6 +219,9 @@
             // 
             // appsGridView
             // 
+            this.appsGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.appsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.appsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NameColumn,
@@ -216,7 +232,7 @@
             this.Lastruntime});
             this.appsGridView.Location = new System.Drawing.Point(60, 91);
             this.appsGridView.Name = "appsGridView";
-            this.appsGridView.Size = new System.Drawing.Size(991, 195);
+            this.appsGridView.Size = new System.Drawing.Size(1003, 218);
             this.appsGridView.TabIndex = 17;
             this.appsGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -254,7 +270,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1172, 538);
+            this.ClientSize = new System.Drawing.Size(1184, 561);
             this.Controls.Add(this.appsGridView);
             this.Controls.Add(this.generateReportButton);
             this.Controls.Add(this.refreshGroupsButton);
@@ -271,6 +287,7 @@
             this.Controls.Add(this.recentApplicationsLabel);
             this.Controls.Add(this.currentMachineNameLabel);
             this.Controls.Add(this.checkApps);
+            this.MinimumSize = new System.Drawing.Size(1200, 600);
             this.Name = "Form1";
             this.Text = "Recent Application Usage Analyzer";
             this.Load += new System.EventHandler(this.Form1_Load);
